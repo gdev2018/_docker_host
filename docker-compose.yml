@@ -5,7 +5,7 @@ services:
         volumes:
             - ./.docker/conf/nginx/default.conf:/etc/nginx/conf.d/default.conf
             - ..:/var/www/html
-            - ./_log/nginx:/var/log/nginx
+            - ./log/nginx:/var/log/nginx
         ports:
             - 80:80
         restart: always
@@ -35,4 +35,4 @@ services:
             - 5432:5432
         volumes:
             - ./.docker/conf/postgres-init/:/docker-entrypoint-initdb.d/
-            - ./_pg:/var/lib/postgresql/data
+            - ./pg:/var/lib/postgresql/data
