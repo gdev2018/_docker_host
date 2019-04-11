@@ -1,0 +1,6 @@
+/log/
+!/log/nginx/.gitkeep
+
+/pg/
+!/pg/.gitkeep 
+
