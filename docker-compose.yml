@@ -19,11 +19,11 @@ services:
             - ./.docker/conf/php/php.ini:/usr/local/etc/php/conf.d/php.ini
             - ./.docker/conf/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
             - ..:/var/www/html
-#    composer:
-#        image: composer
-#        volumes:
-#            - ..:/app
-#        command: install
+    composer:
+        image: composer
+        volumes:
+            - ..:/app
+        command: install
     db:
         image: postgres:10.1
         restart: always
