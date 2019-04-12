@@ -18,6 +18,7 @@ services:
         volumes:
             - ./.docker/conf/php/php.ini:/usr/local/etc/php/conf.d/php.ini
             - ./.docker/conf/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
+            - ./log/php:/var/log
             - ..:/var/www/html
 #    composer:
 #        image: composer
