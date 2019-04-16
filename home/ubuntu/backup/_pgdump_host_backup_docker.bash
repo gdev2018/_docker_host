@@ -3,6 +3,7 @@
 # 2016-10-12 - Initial
 # 2018-01-01 - add Scale option
 # 2019-04-16 - add docker
+#
 # run container: docker exec -ti docker_host_db_1  bash
 # add execute permissions: chmod +x /home/ubuntu/backup/_pgdump_host_backup_docker.bash
 # run backup:    /home/ubuntu/backup/_pgdump_host_backup_docker.bash
@@ -26,7 +27,6 @@ if [ "$ISDOCKER" == "2" ]; then
 	HOST=54.93.205.16
 	PATH4BACKUP="/home/ubuntu/.backup/from_host/"
 else
-	#HOST="laborhub.online"
 	HOST=52.59.34.33
 	PATH4BACKUP="/home/ubuntu/backup/from_host/"
 fi
@@ -57,8 +57,8 @@ print_msg "COMMENT_06: SCALE=$SCALE"
 read -p "password for username=user8: " PGPASSWORD_INPUT 
 
 
-for db_name in plabor
-#for db_name in plabor drupal8
+#for db_name in plabor
+for db_name in plabor drupal8
 do
 	print_msg "COMMENT_10: db_name=$db_name"
 
@@ -75,6 +75,5 @@ do
 	tar -cvjpf $PATHFILE4ARCHIVE -C $PATH4BACKUP $FILE4BACKUP
 	rm "$PATHFILE4BACKUP"
 	print_msg "COMMENT_60: Archived to file: $PATHFILE4ARCHIVE"
-
 
 done

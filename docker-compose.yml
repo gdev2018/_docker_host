@@ -1,4 +1,6 @@
 version: '3'
+# no . in volumes names
+
 services:
     web:
         image: nginx:1.15

@@ -10,6 +10,6 @@
 
 /home/ubuntu/backup/from_host/
 !/home/ubuntu/backup/from_host/.gitkeep
-/home/ubuntu/backup/from_local/
-!/home/ubuntu/backup/from_local/.gitkeep
+/home/ubuntu/backup/restore/
+!/home/ubuntu/backup/restore/.gitkeep
 
