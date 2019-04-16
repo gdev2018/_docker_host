@@ -56,31 +56,25 @@ print_msg "COMMENT_06: SCALE=$SCALE"
 
 read -p "password for username=user8: " PGPASSWORD_INPUT 
 
-#print_msg "COMMENT_10: pg_dump  drupal8 - start"
-#	#/home/ubuntu/.backup/from_host/pg_dump_drupal8_ubuntu_$CURDATETIMET$SCALE.$FILE_EXT
-#	FILE4BACKUP="pg_dump_drupal8_ubuntu_"
-#	PATHFILE4BACKUP="$PATH4BACKUP$FILE4BACKUP$CURDATETIMET$SCALE.$FILE_EXT"
-#	print_msg "COMMENT_11: FILE4BACKUP=$FILE4BACKUP"
-#	print_msg "COMMENT_12: PATHFILE4BACKUP=$PATHFILE4BACKUP"
-#	PGPASSWORD=$PGPASSWORD_INPUT pg_dump  drupal8 --host="$HOST" --port=5432 --username=user8 --clean $SCALE $FORMAT_DUMP > $PATHFILE4BACKUP
-#print_msg "COMMENT_30: pg_dump  drupal8 - finish. Backup to file: $PATHFILE4BACKUP"
-#	tar -cvjpf $PATHFILE4BACKUP.tar.bz2 $PATHFILE4BACKUP
-#	#rm $PATHFILE4BACKUP
-#print_msg "COMMENT_35: arch pg_dump  drupal8 - finish. Arch to file: $PATHFILE4BACKUP.tar.bz2"
 
-print_msg "COMMENT_40: pg_dump  plabor - start"
-	#/home/ubuntu/.backup/from_host/pg_dump_plabor_ubuntu_$CURDATETIMET$SCALE.$FILE_EXT
-	FILE4BACKUP="pg_dump_plabor.$FILE_EXT"
-	#PATHFILE4BACKUP="$PATH4BACKUP$FILE4BACKUP$CURDATETIMET$SCALE.$FILE_EXT"
+for db_name in plabor
+#for db_name in plabor drupal8
+do
+	print_msg "COMMENT_10: db_name=$db_name"
+
+	FILE4BACKUP="pg_dump_$db_name.$FILE_EXT"
 	PATHFILE4BACKUP="$PATH4BACKUP$FILE4BACKUP"
 	PATHFILE4ARCHIVE="$PATH4BACKUP$FILE4BACKUP"_ubuntu_"$CURDATETIMET$SCALE.tar.bz2"
+	print_msg "COMMENT_20: FILE4BACKUP=$FILE4BACKUP"
+	print_msg "COMMENT_30: PATHFILE4BACKUP=$PATHFILE4BACKUP"
+	print_msg "COMMENT_40: PATHFILE4ARCHIVE=$PATHFILE4ARCHIVE"
 	
-	print_msg "COMMENT_41: FILE4BACKUP=$FILE4BACKUP"
-	print_msg "COMMENT_42: PATHFILE4BACKUP=$PATHFILE4BACKUP"
-	print_msg "COMMENT_43: PATHFILE4ARCHIVE=$PATHFILE4ARCHIVE"
+	PGPASSWORD=$PGPASSWORD_INPUT pg_dump $db_name --host="$HOST" --port=5432 --username=user8 --clean $SCALE $FORMAT_DUMP > $PATHFILE4BACKUP
+	print_msg "COMMENT_50: Backup to file: $PATHFILE4BACKUP"
 	
-	PGPASSWORD=$PGPASSWORD_INPUT pg_dump  plabor --host="$HOST" --port=5432 --username=user8 --clean $SCALE $FORMAT_DUMP > $PATHFILE4BACKUP
-print_msg "COMMENT_50: pg_dump  plabor - finish. Backup to file: $PATHFILE4BACKUP"
 	tar -cvjpf $PATHFILE4ARCHIVE -C $PATH4BACKUP $FILE4BACKUP
 	rm "$PATHFILE4BACKUP"
-print_msg "COMMENT_55: arch pg_dump  plabor - finish. Arch to file: $PATHFILE4ARCHIVE.tar.bz2"
+	print_msg "COMMENT_60: Archived to file: $PATHFILE4ARCHIVE"
+
+
+done
