@@ -3,7 +3,8 @@
 # 2016-10-12 - Initial
 # 2018-01-01 - add Scale option
 # 2019-04-16 - add docker
-# run container: docker exec –u root -ti docker_host_db_1  bash
+# run container: docker exec -ti docker_host_db_1  bash
+# add execute permissions: chmod +x /home/ubuntu/backup/_pgdump_host_backup_docker.bash
 # run backup:    /home/ubuntu/backup/_pgdump_host_backup_docker.bash
 
 
@@ -69,12 +70,17 @@ read -p "password for username=user8: " PGPASSWORD_INPUT
 
 print_msg "COMMENT_40: pg_dump  plabor - start"
 	#/home/ubuntu/.backup/from_host/pg_dump_plabor_ubuntu_$CURDATETIMET$SCALE.$FILE_EXT
-	FILE4BACKUP="pg_dump_plabor_ubuntu_"
-	PATHFILE4BACKUP="$PATH4BACKUP$FILE4BACKUP$CURDATETIMET$SCALE.$FILE_EXT"
+	FILE4BACKUP="pg_dump_plabor"
+	#PATHFILE4BACKUP="$PATH4BACKUP$FILE4BACKUP$CURDATETIMET$SCALE.$FILE_EXT"
+	PATHFILE4BACKUP="$PATH4BACKUP$FILE4BACKUP.$FILE_EXT"
+	PATHFILE4ARCHIVE= "$PATH4BACKUP$FILE4BACKUP_ubuntu_$CURDATETIMET$SCALE.$FILE_EXT"
+	
 	print_msg "COMMENT_41: FILE4BACKUP=$FILE4BACKUP"
 	print_msg "COMMENT_42: PATHFILE4BACKUP=$PATHFILE4BACKUP"
+	print_msg "COMMENT_44: PATHFILE4ARCHIVE=$PATHFILE4ARCHIVE"
+	
 	PGPASSWORD=$PGPASSWORD_INPUT pg_dump  plabor --host="$HOST" --port=5432 --username=user8 --clean $SCALE $FORMAT_DUMP > $PATHFILE4BACKUP
 print_msg "COMMENT_50: pg_dump  plabor - finish. Backup to file: $PATHFILE4BACKUP"
-	tar -cvjpf $PATHFILE4BACKUP.tar.bz2 $PATHFILE4BACKUP
+	tar -cvjpf $PATHFILE4ARCHIVE.tar.bz2 $PATHFILE4BACKUP
 	rm "$PATHFILE4BACKUP"
-print_msg "COMMENT_55: arch pg_dump  plabor - finish. Arch to file: $PATHFILE4BACKUP.tar.bz2"
+print_msg "COMMENT_55: arch pg_dump  plabor - finish. Arch to file: $PATHFILE4ARCHIVE.tar.bz2"
