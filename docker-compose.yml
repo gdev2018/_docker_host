@@ -16,11 +16,12 @@ services:
         build: .docker
         restart: always
         volumes:
-            - ./home/ubuntu:/home/ubuntu
+            - ./home/ubuntu/.backup:/home/ubuntu/.aws
+            - ./home/ubuntu/.backup:/home/ubuntu/.backup
             - ./.docker/conf/php/php.ini:/usr/local/etc/php/conf.d/php.ini
             - ./.docker/conf/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
             - ./log/php:/var/log
-            - "./etc/crontabs:/var/spool/cron/crontabs:rw"
+#            - "./etc/crontabs:/var/spool/cron/crontabs:rw"
             - ..:/var/www/html
 #    composer:
 #        image: composer
@@ -37,6 +38,6 @@ services:
         ports:
             - 5432:5432
         volumes:
-            - ./home/ubuntu:/home/ubuntu
+            - ./home/ubuntu/.backup:/home/ubuntu/.backup
             - ./.docker/conf/postgres-init/:/docker-entrypoint-initdb.d/
             - ./pg:/var/lib/postgresql/data
