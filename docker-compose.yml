@@ -16,7 +16,7 @@ services:
         build: .docker
         restart: always
         volumes:
-            - ./home/ubuntu/.backup:/home/ubuntu/.aws
+#            - ./home/ubuntu/.backup:/home/ubuntu/.aws
             - ./.docker/conf/php/php.ini:/usr/local/etc/php/conf.d/php.ini
             - ./.docker/conf/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
             - ./log/php:/var/log
@@ -30,7 +30,7 @@ services:
     db:
         image: postgres:10.1
         restart: always
- #       command: ["mkdir", "/home/ubuntu/.backup"]
+        command: ["mkdir", "/home/ubuntu/.backup"]
         environment:
             - POSTGRES_DB=${DB_NAME}
             - POSTGRES_USER=${DB_USER}
