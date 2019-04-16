@@ -4,7 +4,7 @@
 # 2018-01-01 - add Scale option
 # 2019-04-16 - add docker
 # run container: docker exec –u root -ti docker_host_db_1  bash
-# run backup:    /var/lib/postgresql/data/_pgdump_host_backup_docker.bash
+# run backup:    /home/ubuntu/backup/_pgdump_host_backup_docker.bash
 
 
 clear
@@ -27,7 +27,7 @@ if [ "$ISDOCKER" == "2" ]; then
 else
 	#HOST="laborhub.online"
 	HOST=52.59.34.33
-	PATH4BACKUP="/var/lib/postgresql/data/"
+	PATH4BACKUP="/home/ubuntu/backup/from_host/"
 fi
 
 read -p "format (1-custom, 2-sql) [2]: " FORMAT_DUMP 
