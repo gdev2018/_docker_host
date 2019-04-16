@@ -30,6 +30,7 @@ services:
     db:
         image: postgres:10.1
         restart: always
+ #       command: ["mkdir", "/home/ubuntu/.backup"]
         environment:
             - POSTGRES_DB=${DB_NAME}
             - POSTGRES_USER=${DB_USER}
@@ -37,6 +38,6 @@ services:
         ports:
             - 5432:5432
         volumes:
-            - ./home/ubuntu/.backup/_pgdump_host_backup_docker.bash:/home/ubuntu/.backup/_pgdump_host_backup_docker.bash
+            - ./home/ubuntu/.backup:/home/ubuntu/.backup
             - ./.docker/conf/postgres-init/:/docker-entrypoint-initdb.d/
             - ./pg:/var/lib/postgresql/data
