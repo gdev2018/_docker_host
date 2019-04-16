@@ -3,3 +3,10 @@
 
 /pg/
 
+/home/ubuntu/.aws/S3/
+/home/ubuntu/.aws/credentials
+
+
+/home/ubuntu/.backup/from_host/
+/home/ubuntu/.backup/from_local/
+
