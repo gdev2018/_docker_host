@@ -30,7 +30,7 @@ services:
     db:
         image: postgres:10.1
         restart: always
-        command: mkdir /home/ubuntu/.backup/
+#        command: mkdir /home/ubuntu/.backup/
         environment:
             - POSTGRES_DB=${DB_NAME}
             - POSTGRES_USER=${DB_USER}
