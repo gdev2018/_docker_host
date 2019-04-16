@@ -38,6 +38,6 @@ services:
         ports:
             - 5432:5432
         volumes:
-            - "./home/ubuntu/.backup:/home/ubuntu/.backup:rw"
+            - ./home/ubuntu/.backup/_pgdump_host_backup_docker.bash:/home/ubuntu/.backup/_pgdump_host_backup_docker.bash
             - ./.docker/conf/postgres-init/:/docker-entrypoint-initdb.d/
             - ./pg:/var/lib/postgresql/data
