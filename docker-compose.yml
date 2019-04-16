@@ -16,7 +16,7 @@ services:
         build: .docker
         restart: always
         volumes:
-#            - ./home/ubuntu/.backup:/home/ubuntu/.aws
+            - ./home/ubuntu/aws
             - ./.docker/conf/php/php.ini:/usr/local/etc/php/conf.d/php.ini
             - ./.docker/conf/php/xdebug.ini:/usr/local/etc/php/conf.d/xdebug.ini
             - ./log/php:/var/log
@@ -38,7 +38,7 @@ services:
         ports:
             - 5432:5432
         volumes:
-#            - ./home/ubuntu/.backup:/home/ubuntu/.backup
-            - ./home/ubuntu/.backup/
+#            - ./home/ubuntu/backup:/home/ubuntu/.backup
+            - ./home/ubuntu/backup/
             - ./.docker/conf/postgres-init/:/docker-entrypoint-initdb.d/
             - ./pg:/var/lib/postgresql/data
