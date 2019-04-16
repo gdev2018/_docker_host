@@ -3,13 +3,13 @@
 
 /pg/
 
-/home/ubuntu/.aws/S3/
-!/home/ubuntu/.aws/S3/.gitkeep
-/home/ubuntu/.aws/credentials
+/home/ubuntu/aws/S3/
+!/home/ubuntu/aws/S3/.gitkeep
+/home/ubuntu/aws/credentials
 
 
-/home/ubuntu/.backup/from_host/
-!/home/ubuntu/.backup/from_host/.gitkeep
-/home/ubuntu/.backup/from_local/
-!/home/ubuntu/.backup/from_local/.gitkeep
+/home/ubuntu/backup/from_host/
+!/home/ubuntu/backup/from_host/.gitkeep
+/home/ubuntu/backup/from_local/
+!/home/ubuntu/backup/from_local/.gitkeep
 
