@@ -81,6 +81,6 @@ print_msg "COMMENT_40: pg_dump  plabor - start"
 	
 	PGPASSWORD=$PGPASSWORD_INPUT pg_dump  plabor --host="$HOST" --port=5432 --username=user8 --clean $SCALE $FORMAT_DUMP > $PATHFILE4BACKUP
 print_msg "COMMENT_50: pg_dump  plabor - finish. Backup to file: $PATHFILE4BACKUP"
-	tar -cvjpf $PATHFILE4ARCHIVE.tar.bz2 $PATHFILE4BACKUP
+	tar -cvjp $PATHFILE4ARCHIVE.tar.bz2 $PATHFILE4BACKUP
 	rm "$PATHFILE4BACKUP"
 print_msg "COMMENT_55: arch pg_dump  plabor - finish. Arch to file: $PATHFILE4ARCHIVE.tar.bz2"
